@@ -1,5 +1,5 @@
-.search-click {
-  border: 2px solid #5c4941;
+/* .search-click {
+  border: 2px solid #f3bc59;
   outline: none;
   transition: all 0.5s;
 }
@@ -13,9 +13,9 @@
 }
 .search-click input {
   background: transparent;
-  border: 2px solid #5c4941;
+  border: 2px solid #f3bc59;
   outline: none;
   position: absolute;
   width: 300px;
   left: 0%;
-}
+} */

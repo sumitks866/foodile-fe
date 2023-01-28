@@ -3,6 +3,7 @@ import React from "react";
 import HoverButton from "../Buttons/HoverButton";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import Logo from "assets/logo.png";
+import Link from "next/link";
 
 export default function Head() {
   return (
@@ -29,12 +30,16 @@ export default function Head() {
         </div>
         <div className="mx-4">
           <HoverButton>
-            <span>Login</span>
+            <Link href="/login">
+              <span>Login</span>
+            </Link>
           </HoverButton>
         </div>
         <div className="">
           <PrimaryButton>
-            <span>Signup</span>
+            <Link href="/signup">
+              <span>Signup</span>
+            </Link>
           </PrimaryButton>
         </div>
       </div>

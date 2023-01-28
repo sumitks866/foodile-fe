@@ -15,16 +15,17 @@ export default function Home() {
   return (
     <Wrapper>
       <div className="w-full h-full flex justify-between items-center relative">
-        <div className="flex flex-col">
+        <div className="flex flex-col w-[45%]">
           <div className="font-[Righteous] h-fit text-7xl">
             We give the best
             <br />
             You love
             <img src={Yummy.src} alt="yummy" className="inline h-16 mx-4" />
           </div>
-          <div className="my-6 text-gray-500 text-center">
+          <div className="my-6 text-gray-500">
             We search for delicious foods from your local outlets and give you
             the best deals!!
+            Search your favourite food
           </div>
           <div className="flex">
             <PrimaryButton>
@@ -34,7 +35,7 @@ export default function Home() {
             <ExpandableSearch />
           </div>
         </div>
-        <div className="right-24 bg-[#FFF6E7] absolute z-[-1]">
+        <div className="right-24 bg-[#FFF6E7] absolute">
           <img
             src={FoodImg.src}
             alt="Food Plate"

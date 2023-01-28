@@ -21,4 +21,5 @@ module.exports = {
       pattern: /(bg|text|border)-(primarybg|brown|yellow)/,
     },
   ],
+  important: true,
 };
