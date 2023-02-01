@@ -1,13 +1,31 @@
 import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextInput from "@/components/Input/TextInput";
+import Loader from "@/components/Loader/Loader";
 import AuthWrapper from "@/components/Wrapper/AuthWrapper";
 import React, { useState } from "react";
 
+import { userSignup } from "@/api/signup";
+
 export default function Signup() {
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+  const [firstname, setFirstname] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  // const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+  const onSignUp = async () => {
+    try {
+      setIsLoading(true);
+      // await delay(5000);
+      await userSignup({ firstname, lastname, username:email, password });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <AuthWrapper>
@@ -16,15 +34,15 @@ export default function Signup() {
         <div className="my-2 text-gray-500">Please enter your details</div>
         <TextInput
           label="First Name"
-          value={firstName}
-          setValue={setFirstName}
+          value={firstname}
+          setValue={setFirstname}
           type="text"
           required
         />
         <TextInput
           label="Last Name"
-          value={lastName}
-          setValue={setLastName}
+          value={lastname}
+          setValue={setLastname}
           type="text"
         />
         <TextInput
@@ -41,8 +59,12 @@ export default function Signup() {
           type="password"
           required
         />
-        <PrimaryButton>
-          <div className="font-semibold px-8">Sign Up</div>
+        <PrimaryButton onClick={onSignUp} disabled={isLoading}>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div className="font-semibold px-8">Sign Up</div>
+          )}
         </PrimaryButton>
       </div>
     </AuthWrapper>

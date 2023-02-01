@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextInput from "@/components/Input/TextInput";
+import Loader from "@/components/Loader/Loader";
 import AuthWrapper from "@/components/Wrapper/AuthWrapper";
+import { userLogin } from "@/api/login";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const onLogin = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await userLogin({ username: email, password });
+      localStorage.setItem("token", data.token);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <AuthWrapper>
       <div className="w-[70%]">
@@ -27,8 +43,12 @@ export default function Login() {
           placeholder="Enter password"
           required
         />
-        <PrimaryButton>
-          <div className="font-semibold px-8">Login</div>
+        <PrimaryButton onClick={onLogin} disabled={isLoading}>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div className="font-semibold px-8">Login</div>
+          )}
         </PrimaryButton>
       </div>
     </AuthWrapper>
