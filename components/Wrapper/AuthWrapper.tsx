@@ -4,6 +4,7 @@ import Logo from "assets/logo.png";
 import F1 from "assets/44.png";
 import F2 from "assets/22.png";
 import F3 from "assets/33a.png";
+import loginpic from "assets/food_login.svg";
 
 export default function AuthWrapper({ children }: { children: ReactNode }) {
   return (
@@ -22,11 +23,12 @@ export default function AuthWrapper({ children }: { children: ReactNode }) {
         <img src={F3.src} className="absolute w-60 top-[-20px] left-[35%]" /> */}
         {/* </div> */}
         <div className="text-5xl font-bold font-[Righteous]">
+          <img src={loginpic.src} alt="pic not available" />
           Craving Something?
         </div>
-        <div className="my-2 text-gray-500">
-          Hurry up!
-          <br /> Order your food now!
+        <div className="my-2 text-black-500">
+          <b>Hurry up!</b>
+          <br /> <b>Order your food now!</b>
         </div>
       </div>
     </div>
