@@ -4,6 +4,7 @@ import TextInput from "@/components/Input/TextInput";
 import Loader from "@/components/Loader/Loader";
 import AuthWrapper from "@/components/Wrapper/AuthWrapper";
 import { userLogin } from "@/api/login";
+import Link from "next/link";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -51,6 +52,9 @@ export default function Login() {
           )}
         </PrimaryButton>
       </div>
+      <label>New to the site ?
+      <Link href='/signup'> Register</Link>
+      </label>
     </AuthWrapper>
   );
 }
