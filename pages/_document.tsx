@@ -4,10 +4,12 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
+      <title>Foodile</title>
+      <link rel="icon" href="./assets/icon.png" />
       <link
         href="https://fonts.googleapis.com/css?family=Righteous"
         rel="stylesheet"
-      ></link>
+      />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
