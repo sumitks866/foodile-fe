@@ -5,6 +5,7 @@ import AuthWrapper from "@/components/Wrapper/AuthWrapper";
 import React, { useState } from "react";
 
 import { userSignup } from "@/api/signup";
+import Link from "next/link";
 
 export default function Signup() {
   const [firstname, setFirstname] = useState<string>("");
@@ -67,6 +68,9 @@ export default function Signup() {
           )}
         </PrimaryButton>
       </div>
+      <label>Already a user ?
+        <Link href='/login'> Login</Link>
+      </label>
     </AuthWrapper>
   );
 }
