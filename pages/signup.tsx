@@ -68,8 +68,8 @@ export default function Signup() {
           )}
         </PrimaryButton>
       </div>
-      <label>Already a user ?
-        <Link href='/login'> Login</Link>
+      <label className="flex font-serif w-60s relative">Already a user ?
+        <Link href='/login' className="flex font-serif w-60s relative text-blue-600"> Login</Link>
       </label>
     </AuthWrapper>
   );

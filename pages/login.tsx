@@ -52,8 +52,8 @@ export default function Login() {
           )}
         </PrimaryButton>
       </div>
-      <label>New to the site ?
-      <Link href='/signup'> Register</Link>
+      <label className="flex font-serif w-60s relative">New to the site ?
+      <Link href='/signup' className="flex font-serif w-60s relative text-blue-600"> Register</Link>
       </label>
     </AuthWrapper>
   );
