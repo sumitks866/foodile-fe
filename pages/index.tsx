@@ -10,8 +10,21 @@ import DessertIcon from "assets/desserticon.png";
 import SnackIcon from "assets/nachos.png";
 import Yummy from "assets/yummy.png";
 import ExpandableSearch from "@/components/SearchBar/ExpandableSearch";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const [query, setQuery] = useState<string>("");
+  console.log({ query });
+
+  const onSubmit = (e: Event) => {
+    e.preventDefault();
+    if (!query) return;
+    console.log("submitting");
+    router.push(`/search?query=${query}`);
+  };
+
   return (
     <Wrapper>
       <div className="w-full h-full flex justify-between items-center relative">
@@ -24,15 +37,16 @@ export default function Home() {
           </div>
           <div className="my-6 text-gray-500">
             We search for delicious foods from your local outlets and give you
-            the best deals!!
-            Search your favourite food
+            the best deals!! Search your favourite food
           </div>
           <div className="flex">
             <PrimaryButton>
               <span className="font-semibold">Explore Food</span>
             </PrimaryButton>
             <div className="mx-4" />
-            <ExpandableSearch />
+            <form onSubmit={onSubmit}>
+              <ExpandableSearch value={query} setValue={setQuery} />
+            </form>
           </div>
         </div>
         <div className="right-24 bg-[#FFF6E7] absolute">

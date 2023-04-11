@@ -5,8 +5,11 @@ import Loader from "@/components/Loader/Loader";
 import AuthWrapper from "@/components/Wrapper/AuthWrapper";
 import { userLogin } from "@/api/login";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -16,6 +19,7 @@ export default function Login() {
       setIsLoading(true);
       const { data } = await userLogin({ username: email, password });
       localStorage.setItem("token", data.token);
+      router.push("/");
     } catch (e) {
       console.log(e);
     } finally {
@@ -52,8 +56,8 @@ export default function Login() {
           )}
         </PrimaryButton>
       </div>
-      <label>New to the site ?
-      <Link href='/signup'> Register</Link>
+      <label>
+        New to the site ?<Link href="/signup"> Register</Link>
       </label>
     </AuthWrapper>
   );

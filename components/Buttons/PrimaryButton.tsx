@@ -13,7 +13,7 @@ export default function PrimaryButton({ children, onClick, disabled }: IProps) {
       onClick={() => {
         if (!!onClick && !disabled) onClick();
       }}
-      disabled={disabled}
+      disabled={!!disabled}
     >
       {children}
     </button>

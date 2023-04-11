@@ -6,8 +6,11 @@ import React, { useState } from "react";
 
 import { userSignup } from "@/api/signup";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Signup() {
+  const router = useRouter();
+
   const [firstname, setFirstname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -20,7 +23,8 @@ export default function Signup() {
     try {
       setIsLoading(true);
       // await delay(5000);
-      await userSignup({ firstname, lastname, username:email, password });
+      await userSignup({ firstname, lastname, username: email, password });
+      router.push("/");
     } catch (e) {
       console.log(e);
     } finally {
@@ -68,8 +72,8 @@ export default function Signup() {
           )}
         </PrimaryButton>
       </div>
-      <label>Already a user ?
-        <Link href='/login'> Login</Link>
+      <label>
+        Already a user ?<Link href="/login"> Login</Link>
       </label>
     </AuthWrapper>
   );
