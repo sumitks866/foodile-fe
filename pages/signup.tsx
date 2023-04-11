@@ -38,6 +38,7 @@ export default function Signup() {
           value={firstname}
           setValue={setFirstname}
           type="text"
+          placeholder="Enter your first name"
           required
         />
         <TextInput
@@ -45,12 +46,14 @@ export default function Signup() {
           value={lastname}
           setValue={setLastname}
           type="text"
+          placeholder="Enter your last name"
         />
         <TextInput
           label="Email"
           value={email}
           setValue={setEmail}
           type="email"
+          placeholder="Enter email"
           required
         />
         <TextInput
@@ -58,6 +61,7 @@ export default function Signup() {
           value={password}
           setValue={setPassword}
           type="password"
+          placeholder="Enter password"
           required
         />
         <PrimaryButton onClick={onSignUp} disabled={isLoading}>
@@ -68,8 +72,8 @@ export default function Signup() {
           )}
         </PrimaryButton>
       </div>
-      <label>Already a user ?
-        <Link href='/login'> Login</Link>
+      <label className="flex font-serif w-60s relative">Already a user ?
+        <Link href='/login' className="flex font-serif w-60s relative text-blue-600"> Login</Link>
       </label>
     </AuthWrapper>
   );
