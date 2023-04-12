@@ -5,12 +5,17 @@ import F1 from "assets/44.png";
 import F2 from "assets/22.png";
 import F3 from "assets/33a.png";
 import loginpic from "assets/food_login.svg";
+import { useRouter } from "next/router";
 
 export default function AuthWrapper({ children }: { children: ReactNode }) {
+  const router = useRouter();
   return (
     <div className="w-full h-[100vh] flex">
       <div className="w-[50%] h-full flex flex-col px-24">
-        <div className="text-[#5c4941]  font-bold py-6 text-xl flex items-center">
+        <div
+          className="text-[#5c4941]  font-bold py-6 text-xl flex items-center cursor-pointer"
+          onClick={() => router.push("/")}
+        >
           <img src={Logo.src} alt="Logo" className="h-8 inline mr-2" />
           <span>Foodile</span>
         </div>

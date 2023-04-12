@@ -30,3 +30,16 @@ export interface IFood {
   imgUrl: string;
   description?: string;
 }
+
+export interface IAuthState {
+  username?: string;
+  firstname?: string;
+  lastname?: string;
+  jwt?: string;
+  userLoading: boolean;
+  userLoggedIn: boolean;
+  userLoggingIn: boolean;
+  loginError: string | Error;
+  signupError: string | Error;
+  profileImgURL?: string;
+}

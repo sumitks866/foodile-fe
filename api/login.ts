@@ -5,7 +5,7 @@ interface IUserLoginResponse {
   token: string;
 }
 
-interface ILoginRequest {
+export interface ILoginRequest {
   username: string;
   password: string;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextInput from "@/components/Input/TextInput";
 import Loader from "@/components/Loader/Loader";
@@ -6,26 +6,23 @@ import AuthWrapper from "@/components/Wrapper/AuthWrapper";
 import { userLogin } from "@/api/login";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { loginUser } from "@/store/auth/authActions";
+import { AuthContext } from "@/store/store";
 
 export default function Login() {
   const router = useRouter();
+  const { state, dispatch } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onLogin = async () => {
-    try {
-      setIsLoading(true);
-      const { data } = await userLogin({ username: email, password });
-      localStorage.setItem("token", data.token);
-      router.push("/");
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setIsLoading(false);
-    }
+    loginUser(dispatch, { username: email, password });
   };
+
+  useEffect(() => {
+    if (state.userLoggedIn) router.push("/");
+  }, [state, router]);
 
   return (
     <AuthWrapper>
@@ -48,16 +45,20 @@ export default function Login() {
           placeholder="Enter password"
           required
         />
-        <PrimaryButton onClick={onLogin} disabled={isLoading}>
-          {isLoading ? (
+        <PrimaryButton onClick={onLogin} disabled={state.userLoggingIn}>
+          {state.userLoggingIn ? (
             <Loader />
           ) : (
             <div className="font-semibold px-8">Login</div>
           )}
         </PrimaryButton>
       </div>
-      <label>
-        New to the site ?<Link href="/signup"> Register</Link>
+      <label className="flex w-60s relative">
+        New to the site ?
+        <Link href="/signup" className="flex w-60s relative text-blue-600">
+          {" "}
+          Register
+        </Link>
       </label>
     </AuthWrapper>
   );

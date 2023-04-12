@@ -18,6 +18,7 @@ export default function Head() {
         <span>Foodile</span>
       </div>
       <div className="flex justify-between font-semibold">
+        <div>Logged in</div>
         <div className="">
           <HoverButton>
             <span>Explore</span>
